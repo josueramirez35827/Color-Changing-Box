@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const [color, setColor] = useState('black');
+
+  const changeColor = (colorText) => {
+    if (colorText.target.value == '') {
+      setColor(color);
+    } else {
+      setColor(colorText.target.value);
+      console.log(colorText.target.value)
+    }
+  }
+
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{ backgroundColor: color, height: "150px", width: 'auto' }} className='square' />
+      <input type={'text'} placeholder='Enter Color' onChange={(color) => changeColor(color)} />
     </div>
   );
 }
